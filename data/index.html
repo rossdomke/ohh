@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Ohh</title>
+
+</head>
+<style>
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*GRADIENTS*/
+  /*GREEN*/
+  .b-green, .b-green:before {
+    background: rgba(73,155,234,1);
+    background: -moz-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(26,188,156,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(73,155,234,1)), color-stop(100%, rgba(26,188,156,1)));
+    background: -webkit-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(26,188,156,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(26,188,156,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(26,188,156,1) 100%);
+    background: linear-gradient(45deg, rgba(73,155,234,1) 0%, rgba(26,188,156,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#1abc9c', GradientType=1 );
+  }
+  /*PINK*/
+  .b-pink, .b-pink:before {
+    background: rgba(231,72,234,1);
+    background: -moz-linear-gradient(45deg, rgba(231,72,234,1) 0%, rgba(75,26,188,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(231,72,234,1)), color-stop(100%, rgba(75,26,188,1)));
+    background: -webkit-linear-gradient(45deg, rgba(231,72,234,1) 0%, rgba(75,26,188,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(231,72,234,1) 0%, rgba(75,26,188,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(231,72,234,1) 0%, rgba(75,26,188,1) 100%);
+    background: linear-gradient(45deg, rgba(231,72,234,1) 0%, rgba(75,26,188,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e748ea', endColorstr='#4b1abc', GradientType=1 );
+  }
+  /*RED*/
+  .b-red, .b-red:before {
+    background: rgba(234,110,72,1);
+    background: -moz-linear-gradient(45deg, rgba(234,110,72,1) 0%, rgba(188,26,99,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(234,110,72,1)), color-stop(100%, rgba(188,26,99,1)));
+    background: -webkit-linear-gradient(45deg, rgba(234,110,72,1) 0%, rgba(188,26,99,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(234,110,72,1) 0%, rgba(188,26,99,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(234,110,72,1) 0%, rgba(188,26,99,1) 100%);
+    background: linear-gradient(45deg, rgba(234,110,72,1) 0%, rgba(188,26,99,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ea6e48', endColorstr='#bc1a63', GradientType=1 );
+  }
+  /*ORANGE*/
+  .b-orange, .b-orange:before {
+    background: rgba(255,193,7,1);
+    background: -moz-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,193,7,1)), color-stop(100%, rgba(255,87,34,1)));
+    background: -webkit-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    background: linear-gradient(45deg, rgba(255,193,7,1) 0%, rgba(255,87,34,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc107', endColorstr='#ff5722', GradientType=1 );
+  }
+  /*BLUE*/
+  .b-blue, .b-blue:before {
+    background: rgba(5,118,255,1);
+    background: -moz-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(5,118,255,1)), color-stop(100%, rgba(36,248,255,1)));
+    background: -webkit-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: -o-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: -ms-linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    background: linear-gradient(45deg, rgba(5,118,255,1) 0%, rgba(36,248,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0576ff', endColorstr='#24f8ff', GradientType=1 );
+  }
+/*END GRADIENTS*/
+/*BASE BUTTON*/
+.button {
+  display: inline-block;
+  position: relative;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: .5em;
+  margin: .5em;
+  font-size: 2em;
+  font-weight: bold;
+  transition: all .5s;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.button:hover {
+  text-shadow: 0px 0px 0px rgba(255, 255, 255, .75);
+}
+.button:hover:after {
+  left: 100%;
+  top: 100%;
+  bottom: 100%;
+  right: 100%;
+}
+.button:before {
+  content: '';
+  /* display: block; */
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 5px;
+  transition: all .5s;
+}
+.button:after {
+  content: '';
+  /* display: block; */
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 2px;
+  z-index: -1;
+  border-radius: 5px;
+  transition: all .5s;
+}
+.button2 {
+  /* display: inline-block; */
+  font-size: 2em;
+  margin: .5em;
+  padding: .5em;
+  border-radius: 5px;
+  transition: all .5s;
+  filter: hue-rotate(0deg);
+  color: #FFF;
+  text-decoration: none;
+}
+/*END BASE BUTTON*/
+/*ROTATE*/
+.rot-360-noscoop:hover {
+  filter: hue-rotate(360deg);
+  transform: rotate(360deg);
+}
+.rot-135:hover {
+  filter: hue-rotate(135deg);
+}
+.rot-90:hover {
+  filter: hue-rotate(90deg);
+}
+/*END ROTATE*/
+</style>
+<style>
+  body {
+    padding: 1%;
+    font-family: 'Roboto', sans-serif;
+    background: #2c3e50;
+    color: white;
+  }
+  body, .button:after {
+    background: #2c3e50;
+  }
+
+  .control {
+    display: flex;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  .control>label {
+    font-size: 1.5rem;
+    flex-grow: 1;
+    align-self: center;
+  }
+  .control>.button {
+    height: 45px;
+    line-height: 45px;
+    flex-grow: 1;
+    max-width: 150px;
+    margin: 5px;
+    cursor: pointer;
+  }
+
+  
+</style>
+<body>
+  <!-- Mode: <button onclick="doSend('00')">-</button><button onclick="doSend('01')">+</button><br/> -->
+  <div class="control">
+    <label>Brightness</label>
+    <a href="#" onclick="doSend('00')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('01')" class="button b-green">+</a>
+  </div>
+  <div class="control">
+    <label>Segments</label>
+    <a href="#" onclick="doSend('10')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('11')" class="button b-green">+</a>
+  </div>
+  <div class="control">
+    <label>Spin Amount</label>
+    <a href="#" onclick="doSend('20')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('21')" class="button b-green">+</a>
+  </div>
+  <div class="control">
+    <label>Spin Direction</label>
+    <a href="#" onclick="doSend('30')" class="button b-red">Left</a>
+    <a href="#" onclick="doSend('31')" class="button b-green">Right</a>
+  </div>
+  <div class="control">
+    <label>Animation</label>
+    <a href="#" onclick="doSend('40')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('41')" class="button b-green">+</a>
+  </div>
+  <div class="control">
+    <label>Animation Speed</label>
+    <a href="#" onclick="doSend('50')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('51')" class="button b-green">+</a>
+  </div>
+  <div class="control">
+    <label>Advance Frame</label>
+    <a href="#" onclick="doSend('61')" class="button b-green">Advance</a>
+  </div>
+  <div class="control">
+    <label>Color Palette</label>
+    <a href="#" onclick="doSend('70')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('71')" class="button b-green">+</a>
+  </div>
+</body>
+
+<script language="javascript" type="text/javascript">
+  var url = "ws://192.168.4.1:1337/";
+
+  // This is called when the page finishes loading
+  function init() {
+    wsConnect(url);
+  }
+
+  // Call this to connect to the WebSocket server
+  function wsConnect(url) {
+
+
+    websocket = new WebSocket(url);
+
+    // Assign callbacks
+    websocket.onopen = function (evt) {
+      onOpen(evt)
+    };
+    websocket.onclose = function (evt) {
+      onClose(evt)
+    };
+    websocket.onmessage = function (evt) {
+      onMessage(evt)
+    };
+    websocket.onerror = function (evt) {
+      onError(evt)
+    };
+  }
+
+  // Called when a WebSocket connection is established with the server
+  function onOpen(evt) {
+    console.log("Connected");
+  }
+
+  // Called when the WebSocket connection is closed
+  function onClose(evt) {
+    console.log("Disconnected");
+    setTimeout(function () {
+      wsConnect(url)
+    }, 2000);
+  }
+
+  // Called when a message is received from the server
+  function onMessage(evt) {
+    console.log("Received: " + evt.data);
+  }
+
+  // Called when a WebSocket error occurs
+  function onError(evt) {
+    console.log("ERROR: " + evt.data);
+  }
+
+  // Sends a message to the server (and prints it to the console)
+  function doSend(message) {
+    console.log("Sending: " + message);
+    websocket.send(message);
+  }
+
+  // Call the init function as soon as the page loads
+  window.addEventListener("load", init, false);
+</script>
+
+</html>
