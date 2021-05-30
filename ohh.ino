@@ -22,8 +22,8 @@ WebSocketsServer webSocket = WebSocketsServer(ws_port);
 char msg_buf[10];
 
 // LED Globals 
-uint8_t G_BRIGHTNESS = 255;
-uint8_t G_RING_SEGMENTS = 5;
+uint8_t G_BRIGHTNESS = 25;
+uint8_t G_RING_SEGMENTS = 1;
 uint16_t G_START_OFFSET = 0;
 uint8_t G_SPIN_AMOUNT = 0;
 uint8_t G_SERIAL_MODE = 0;
@@ -31,8 +31,8 @@ bool G_SPIN_CLOCKWISE = true;
 bool G_ANIMATE_FORWARD = true;
 uint16_t G_ANIMATION_FRAME = 0;
 uint8_t G_ANIMATION_SPEED = 1;
-uint8_t G_COLOR_PALETTE_INDEX = 4;
-uint8_t G_ANIMATION_INDEX = 4;
+uint8_t G_COLOR_PALETTE_INDEX = 12;
+uint8_t G_ANIMATION_INDEX = 1;
 typedef void (*Animations[])(uint16_t segLeg, uint16_t segStart, uint8_t segNum);
 
 
@@ -46,6 +46,7 @@ CRGB leds[NUM_LEDS];
 //web socket event function
 void onWebSocketEvent(uint8_t client_num, WStype_t type, uint8_t * payload, size_t length) {
   String strPayload;
+  bool num1 = true;
   switch(type) {
     case WStype_DISCONNECTED:
       Serial.printf("[%u] Disconnected!\n", client_num);
@@ -59,12 +60,16 @@ void onWebSocketEvent(uint8_t client_num, WStype_t type, uint8_t * payload, size
       break;
      case WStype_TEXT:
       Serial.printf("[%u] Received text: %s\n", client_num, payload);
-      for(uint8_t i = 0; i < 2; i++){
-        strPayload += (char)payload[i];
-      }
       uint8_t fp, sp;
-      fp = strPayload.toInt() / 10;
-      sp = strPayload.toInt() % 10;
+      for(uint8_t i = 0; i < length; i++){
+        if((char)payload[i] == ':') {
+          fp = strPayload.toInt();
+          strPayload = "";
+        } else {
+          strPayload += (char)payload[i];
+        }
+      }
+      sp = strPayload.toInt();
       handleText(fp, sp);
       break;
     // For everything else: do nothing
@@ -178,19 +183,7 @@ void handleText(uint8_t firstParam, uint8_t secondParam){
           }
           break;
         case 4: // ANIMATION
-          if(secondParam == 1) {
-            if(G_ANIMATION_INDEX + 1 >= sizeof(animations)/4) {
-              G_ANIMATION_INDEX = 0;
-            } else {
-              G_ANIMATION_INDEX += 1;
-            }
-          } else {
-            if (G_ANIMATION_INDEX > 0) {
-              G_ANIMATION_INDEX -= 1;
-            } else {
-              G_ANIMATION_INDEX = (sizeof(animations)/4) -1; 
-            }
-          }
+          G_ANIMATION_INDEX = secondParam;
           break;
         case 5: // ANIMATION SPEED
           if(secondParam == 1) {
@@ -206,19 +199,7 @@ void handleText(uint8_t firstParam, uint8_t secondParam){
 //          G_SERIAL_MODE = 0;
           break;
         case 7: // COLOR PALETTE
-        if(secondParam == 1) {
-            if(G_COLOR_PALETTE_INDEX + 1 >= sizeof(palettes)/sizeof(CRGBPalette16) ){
-              G_COLOR_PALETTE_INDEX = 0;
-            } else {
-              G_COLOR_PALETTE_INDEX += 1;
-            }
-          } else {
-            if (G_COLOR_PALETTE_INDEX > 0) {
-              G_COLOR_PALETTE_INDEX -= 1;
-            } else {
-              G_COLOR_PALETTE_INDEX = (sizeof(palettes)/sizeof(CRGBPalette16)) -1; 
-            }
-          }
+          G_COLOR_PALETTE_INDEX = secondParam;
           break;
         default: 
 //        G_SERIAL_MODE = 0;

@@ -120,6 +120,44 @@ DEFINE_GRADIENT_PALETTE( red_orange ){
   255, 255, 255, 0
 };
 
+// Gradient palette "Golden_gp", originally from
+// http://soliton.vm.bytemark.co.uk/pub/cpt-city/ggr/tn/Golden.png.index.html
+// converted for FastLED with gammas (2.6, 2.2, 2.5)
+// Size: 116 bytes of program space.
+
+DEFINE_GRADIENT_PALETTE( Golden_gp ) {
+    0,  34, 24,  1,
+   20,  44, 36,  1,
+   41,  49, 36,  1,
+   49,  65, 51,  1,
+   57,  83, 68,  2,
+   64, 110, 92,  6,
+   72, 142,119, 11,
+   80, 171,149, 17,
+   88, 206,182, 25,
+   97, 217,197, 29,
+  105, 229,215, 32,
+  119, 188,171, 21,
+  131, 152,133, 12,
+  138, 132,108,  7,
+  145, 113, 86,  4,
+  153,  98, 78,  3,
+  161,  86, 70,  2,
+  169, 110, 88,  5,
+  178, 139,109,  9,
+  185, 153,130, 12,
+  193, 169,152, 16,
+  200, 159,139, 13,
+  208, 150,128, 11,
+  216, 132,107,  7,
+  223, 113, 86,  4,
+  231,  98, 69,  2,
+  238,  50, 38,  1,
+  248,  55, 36,  1,
+  255,  41, 24,  1};
+
+
+
 CRGBPalette16 palettes[] = {
   red_orange,
   sunrise,
@@ -132,8 +170,8 @@ CRGBPalette16 palettes[] = {
   bhw1_06_gp, 
   bhw3_62_gp, 
   bhw3_01_gp, 
-  bhw4_029_gp 
-
+  bhw4_029_gp,
+  Golden_gp
 };
 inline uint8_t GetRandomPaletteIndex() {
   return random(0, sizeof(palettes)/sizeof(CRGBPalette16));

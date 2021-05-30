@@ -114,6 +114,19 @@ table {
   }
 /*END GRADIENTS*/
 /*BASE BUTTON*/
+select {
+  display: inline-block;
+  position: relative;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: .5em;
+  margin: .5em;
+  font-size: 2em;
+  font-weight: bold;
+  transition: all .5s;
+  color: white;
+  background-color: black !important;
+}
 .button {
   display: inline-block;
   position: relative;
@@ -127,16 +140,18 @@ table {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.button:hover {
+.button:hover, select:hover {
   text-shadow: 0px 0px 0px rgba(255, 255, 255, .75);
 }
-.button:hover:after {
+
+
+select:hover:after, .button:hover:after {
   left: 100%;
   top: 100%;
   bottom: 100%;
   right: 100%;
 }
-.button:before {
+.button:before, select:before{
   content: '';
   /* display: block; */
   position: absolute;
@@ -148,7 +163,7 @@ table {
   border-radius: 5px;
   transition: all .5s;
 }
-.button:after {
+.button:after, select:after{
   content: '';
   /* display: block; */
   position: absolute;
@@ -207,6 +222,9 @@ table {
     flex-grow: 1;
     align-self: center;
   }
+  .control>select {
+    flex-grow: 1; 
+  }
   .control>.button {
     height: 45px;
     line-height: 45px;
@@ -222,42 +240,63 @@ table {
   <!-- Mode: <button onclick="doSend('00')">-</button><button onclick="doSend('01')">+</button><br/> -->
   <div class="control">
     <label>Brightness</label>
-    <a href="#" onclick="doSend('00')" class="button b-red">-</a>
-    <a href="#" onclick="doSend('01')" class="button b-green">+</a>
+    <a href="#" onclick="doSend('0:0')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('0:1')" class="button b-green">+</a>
   </div>
   <div class="control">
     <label>Segments</label>
-    <a href="#" onclick="doSend('10')" class="button b-red">-</a>
-    <a href="#" onclick="doSend('11')" class="button b-green">+</a>
+    <a href="#" onclick="doSend('1:0')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('1:1')" class="button b-green">+</a>
   </div>
   <div class="control">
     <label>Spin Amount</label>
-    <a href="#" onclick="doSend('20')" class="button b-red">-</a>
-    <a href="#" onclick="doSend('21')" class="button b-green">+</a>
+    <a href="#" onclick="doSend('2:0')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('2:1')" class="button b-green">+</a>
   </div>
   <div class="control">
     <label>Spin Direction</label>
-    <a href="#" onclick="doSend('30')" class="button b-red">Left</a>
-    <a href="#" onclick="doSend('31')" class="button b-green">Right</a>
+    <a href="#" onclick="doSend('3:0')" class="button b-red">Left</a>
+    <a href="#" onclick="doSend('3:1')" class="button b-green">Right</a>
   </div>
   <div class="control">
     <label>Animation</label>
-    <a href="#" onclick="doSend('40')" class="button b-red">-</a>
-    <a href="#" onclick="doSend('41')" class="button b-green">+</a>
+    <select class="b-red" onchange="selectChange(4, event)">
+      <option value="0">Segment</option>
+      <option value="1">Rainbow</option>
+      <option value="2">Streamer</option>
+      <option value="3">Color Grow</option>
+      <option value="4">Grow Shrink</option>
+    </select>
+
+    <!-- <a href="#" onclick="doSend('40')" class="button b-red">-</a> -->
+    <!-- <a href="#" onclick="doSend('41')" class="button b-green">+</a> -->
   </div>
   <div class="control">
     <label>Animation Speed</label>
-    <a href="#" onclick="doSend('50')" class="button b-red">-</a>
-    <a href="#" onclick="doSend('51')" class="button b-green">+</a>
+    <a href="#" onclick="doSend('5:0')" class="button b-red">-</a>
+    <a href="#" onclick="doSend('5:1')" class="button b-green">+</a>
   </div>
   <div class="control">
     <label>Advance Frame</label>
-    <a href="#" onclick="doSend('61')" class="button b-green">Advance</a>
+    <a href="#" onclick="doSend('6:1')" class="button b-green">Advance</a>
   </div>
   <div class="control">
     <label>Color Palette</label>
-    <a href="#" onclick="doSend('70')" class="button b-red">-</a>
-    <a href="#" onclick="doSend('71')" class="button b-green">+</a>
+    <select class="b-pink" onchange="selectChange(7, event)">
+      <option value="0">Red Orange</option>
+      <option value="1">Sunrise</option>
+      <option value="2">Seafoam</option>
+      <option value="3">Magenta Blue</option>
+      <option value="4">Rainbow</option>
+      <option value="5">Hult</option>
+      <option value="6">Abstract 3</option>
+      <option value="7">Abstract 2</option>
+      <option value="8">BHW1 06</option>
+      <option value="9">BHW3 62</option>
+      <option value="10">BHW3 1</option>
+      <option value="11">BHW4 029</option>
+      <option value="12">Golden</option>
+    </select>
   </div>
 </body>
 
@@ -303,6 +342,10 @@ table {
     }, 2000);
   }
 
+  function selectChange(type, evt) {
+    var value = evt.target.value;
+    doSend(`${type}:${value}`);
+  }
   // Called when a message is received from the server
   function onMessage(evt) {
     console.log("Received: " + evt.data);
